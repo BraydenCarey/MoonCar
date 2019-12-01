@@ -15,6 +15,8 @@ import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
 public class MoonCarTest {
+    //Static Variables to be referenced between parameters
+    //The size of the Plateau is defined here
     private static int MAX_X = 6;
     private static int MAX_Y = 6;
     private static int carCount=0;

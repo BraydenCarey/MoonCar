@@ -1,4 +1,4 @@
-This program was developed using java 1.8 using IntelliJ IDEA and tested using JUnit 4.
+This program was developed using java 1.8 using IntelliJ IDEA Community 2018.2 and tested using JUnit 4.
 
 //Functionality Issues Q/A
 Question: Program will allow multiple Moon Cars but will not check where they are placed. A moon car can
