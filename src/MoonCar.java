@@ -17,8 +17,10 @@ public class MoonCar {
 
     }
 
-    public void manuever(String instructions){
+    public void manuever(String instructions, MoonCar moon[][]){
+
         char instruction;
+
         for(int i=0; i<instructions.length(); i++){
             instruction = instructions.charAt(i);
             if(instruction == 'L'){
@@ -28,7 +30,26 @@ public class MoonCar {
                 this.right();
             }
             else if(instruction == 'M'){
+                int posx = this.position_x;
+                int posy = this.position_y;
                 this.move();
+                //Check for out of bounds
+                if(this.position_x < 0 || this.position_y <0 || this.position_x >= moon.length || this.position_y >= moon.length){
+                    //Stops the car advancing to coordinates because its out of bounds
+                    this.position_x = posx;
+                    this.position_y = posy;
+                }
+
+
+                //Check for potential collisions
+
+                if(moon[this.position_x][this.position_y]!=null){
+                    //Stops the car advancing to coordinates because there's another car there
+                    this.position_x = posx;
+                    this.position_y = posy;
+                }
+
+
             }
             else{
                 System.out.println("Error: Invalid character" + instruction);

@@ -10,7 +10,7 @@ public class NASA {
     {
         //Number of moon cars deployed
         int carCounter = 0;
-        //Max size of the plateau
+        //Max size of the plateau given by first line of input
         int max_x;
         int max_y;
         //Holds the file name
@@ -40,8 +40,10 @@ public class NASA {
 
             //Start adding moon cars to the moon!
             while((line = bufferedReader.readLine())!=null) {
-                //Split the coordinates and orientation up
+                //Split the coordinates and orientation up of where the car starts
+                //stringHolder[0] is the x coordinate, stringHolder[1] is the Y coordinate, stringHolder[2] is the Orientation of the car.
                 String[] stringHolder = line.split(" ");
+
                 //Register vehicle
                 carCounter++;
                 MoonCar car = new MoonCar(carCounter, stringHolder[2], Integer.parseInt(stringHolder[0]), Integer.parseInt(stringHolder[1]));
@@ -49,13 +51,17 @@ public class NASA {
                 //Manuever instructions
                 line = bufferedReader.readLine();
 
-                car.manuever(line);
+                //Car moves to a spot
+                car.manuever(line,moon);
 
+                //Location is recorded on the grid
                 moon[car.getPosition_x()][car.getPosition_y()] = car;
 
+                //Location is output to console
                 System.out.println(car.getPosition_x() + " " + car.getPosition_y() + " " + car.getOrientation());
 
             }
+
             //Always close the buffered reader
             bufferedReader.close();
 
